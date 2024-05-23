@@ -54,9 +54,19 @@ const todoSlice = createSlice({
             const index = findTodoIndexById(state, action.payload.id);
             state[index].task = action.payload.task;
         }
+    },
+    selectors: {
+        getAllTodos: function (state) {
+            return state;
+        },
+        getTodoById: function (state, id) {
+            const index = findTodoIndexById(state, id);
+            return state[index];
+        }
     }
 });
 
 export const { createTodo, deleteTodo, updateTodo } = todoSlice.actions;
+export const { getAllTodos, getTodoById } = todoSlice.selectors;
 
 export default todoSlice.reducer;

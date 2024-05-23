@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createTodo, deleteTodo, updateTodo } from "../stores/todoSlice";
+import { createTodo, deleteTodo, getAllTodos, updateTodo } from "../stores/todoSlice";
 
 function TodoItem({ todo }) {
     const dispatch = useDispatch();
@@ -24,7 +24,8 @@ function TodoItem({ todo }) {
 
 export default function TodoList(props) {
     const dispatch = useDispatch();
-    const todos = useSelector((state) => state.todos);
+    // const todos = useSelector((state) => state.todos);
+    const todos = useSelector(getAllTodos);
     const onClick = () => {
         const newTodo = prompt("What todo do you want to create")
         dispatch(createTodo({task: newTodo}))
